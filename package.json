@@ -26,10 +26,13 @@
         "@ng-bootstrap/ng-bootstrap": "^2.0.0",
         "@ngx-translate/core": "^10.0.1",
         "@ngx-translate/http-loader": "^3.0.1",
+        "angularfire2": "^5.0.2",
         "chart.js": "^2.7.2",
         "core-js": "^2.5.5",
+        "firebase": "^5.5.2",
         "font-awesome": "^4.7.0",
         "ng2-charts": "^1.6.0",
+        "official-lumx": "^1.7.36",
         "rxjs": "^6.1.0",
         "yarn": "^1.6.0",
         "zone.js": "^0.8.26"

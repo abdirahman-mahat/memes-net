@@ -9,7 +9,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
-
+import { GalleryComponent } from './gallery/gallery.component';
+import { NotificationComponent } from './notification/notification.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule,
+        AngularFireStorage,
+        AngularFireUploadTask } from 'angularfire2/storage';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { NotificationServicesService } from './notification-services.service';
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
     /* for development
@@ -27,8 +36,14 @@ export const createTranslateLoader = (http: HttpClient) => {
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+    // To initialize AngularFire
+        AngularFireModule.initializeApp(environment.firebase),
         TranslateModule.forRoot({
-            loader: {
+                loader: {
                 provide: TranslateLoader,
                 useFactory: createTranslateLoader,
                 deps: [HttpClient]
@@ -36,8 +51,15 @@ export const createTranslateLoader = (http: HttpClient) => {
         }),
         AppRoutingModule
     ],
-    declarations: [AppComponent],
-    providers: [AuthGuard],
+    declarations: [
+        AppComponent,
+         GalleryComponent,
+          NotificationComponent
+        ],
+    providers: [
+        AuthGuard,
+        NotificationServicesService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
